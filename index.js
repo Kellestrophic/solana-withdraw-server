@@ -97,8 +97,10 @@ const sslOptions = {
   cert: fs.readFileSync('./server.cert')
 };
 
-const PORT = 4041;
+// ✅ Render-compatible HTTP server setup
+const PORT = process.env.PORT || 3000;
 
-https.createServer(sslOptions, app).listen(PORT, () => {
-  console.log(`🚀 HTTPS Withdraw server running at https://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`🚀 Withdraw server running on port ${PORT}`);
 });
+
